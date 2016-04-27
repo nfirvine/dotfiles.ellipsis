@@ -4,63 +4,32 @@ ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
 export PATH=/usr/local/bin:$PATH
 
 # Use homebrew to install a few necessities
-brew install libevent
-brew link libevent
 brew install \
     ack \
-    cloc \
-    clojure \
     cmake \
-    cowsay \
     ctags \
     dos2unix \
-    elinks \
     sshfs \
     gnu-sed \
     git \
-    haskell-platform \
-    html2text \
     https://raw.github.com/Homebrew/homebrew-games/master/nethack.rb \
     hub \
     lame \
-    leiningen \
-    libev \
     macvim \
-    mercurial \
-    mkvtoolnix \
-    mongodb \
     netcat \
-    node \
-    pianobar \
-    postgresql \
-    pypy \
     python \
     python3 \
     readline \
-    redis \
-    repl \
-    rhino \
-    riak \
     ruby \
-    spidermonkey \
     ssh-copy-id \
-    sshfs \
     tmux \
     tree \
     unrar \
-    vimpager \
     watch \
     wget \
-    z \
-    zeromq
+    z
 
-brew install llvm --with-clang --with-asan
 brew install zsh --disable-etcdir
-brew install --HEAD ffmpeg
-brew install --HEAD https://raw.github.com/pigoz/homebrew-mplayer2/master/Formula/mplayer2.rb
-
-# install wc3 version of tidy, which is a head only formula
-brew install https://raw.github.com/gist/3790109/373a9eb28d41ee413caf189cdb1d3044bec24857/tidy-html5.rb --HEAD
 
 # links apps installed by homebrew
 brew linkapps
@@ -75,53 +44,8 @@ sudo mv /etc/zshenv /etc/zprofile
 sudo cp -rfX /usr/local/Cellar/fuse4x-kext/0.9.1/Library/Extensions/fuse4x.kext /Library/Extensions
 sudo chmod +s /Library/Extensions/fuse4x.kext/Support/load_fuse4x
 
-# Update cabal
-cabal update
-
-# brew refuses to install npm for whatever reason
-curl http://npmjs.org/install.sh | sh
-
-# Install node.js utilities
-npm install -g \
-    cdir \
-    chai \
-    coffee-script \
-    coffeelint \
-    csslint \
-    docco \
-    html2jade \
-    jitsu \
-    js2coffee \
-    jshint \
-    jsontool \
-    mocha
-
-# Ruby gems
-gem install CoffeeTags
-gem install git-issues
-gem install coloration
-gem install jist
-
-# Python packages
-pip install httpie
-pip install virtualenv
-pip install flake8
-
-# Clojure
-lein plugin install org.clojars.ibdknox/lein-nailgun 1.1.1
-
-# Haskell
-cabal install ghc-mod pandoc
-# Ask for the administrator password upfront
-sudo -v
-
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-sudo scutil --set ComputerName "qi"
-sudo scutil --set HostName "qi"
-sudo scutil --set LocalHostName "qi"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "qi"
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
